@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="driver.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+  var newArr = driver();
+  var dummy = [];
+  for (var i = 0; i < newArr.length; i++) {
+    var obj = new Object();
+    obj.y = newArr[i];
+    dummy.push(obj);
+  }
+  var chart = new CanvasJS.Chart('chartContainer', {
+    title: {
+      text: 'BBO Best cost Chart'
+    },
+    data: [
+      {
+        // Change type to "doughnut", "line", "splineArea", etc.
+        type: 'line',
+        dataPoints: dummy
+      }
+    ]
+  });
+  chart.render();
+};
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</body>
+</html>
